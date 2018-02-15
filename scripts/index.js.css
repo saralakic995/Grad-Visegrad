@@ -1,0 +1,47 @@
+var title = document.getElementById("title");
+
+title.onclick = function () {
+  title.style.color = "purple";
+};
+
+var dropdowns = document.getElementsByClassName("drop-down");
+
+for (var i = 0; i < dropdowns.length; i++) {
+  var dropdown = dropdowns[i];
+
+  var main = dropdown.getElementsByClassName("main")[0];
+  var menu = dropdown.getElementsByClassName("menu")[0];
+
+  var mouseOnMain = false,
+      mouseOnMenu = false;
+
+  main.onmouseover = function () {
+    mouseOnMain = true;
+    toggleMenu();
+  }
+
+  main.onmouseout = function () {
+    mouseOnMain = false;
+    toggleMenu();
+  }
+
+  menu.onmouseover = function () {
+    mouseOnMenu = true;
+    toggleMenu()
+  }
+
+  menu.onmouseout = function () {
+    mouseOnMenu = false;
+    toggleMenu();
+  }
+
+  function toggleMenu() {
+    setTimeout(() => {
+      if (mouseOnMain || mouseOnMenu)
+        menu.style.display = "block";
+      else {
+        menu.style.display = "none";
+      }
+    }, 75);
+  }
+}
